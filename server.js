@@ -81,8 +81,7 @@ app.post("/", async (req, res) => {
   // const pdfLinksHtml = responseServopa.data.map(pdf => { return `<a href='${pdf.url}'>${pdf.label}</a>`; }); // Junte todos os links com um separador e adicione à mensagem 
   // messageHtml += pdfLinksHtml.join(" | ");
 
-  return res.json({"looker": { "success": true, 
-  "links": [ { "label": "PDF 1", "url": "https://seuservidor.com/pdf1.pdf", "type": "URL" }, { "label": "PDF 2", "url": "https://seuservidor.com/pdf2.pdf", "type": "URL" } ]} });
+  return res.json({"looker": { "success": true, "message": JSON.stringify(responseServopa.data)} });
 
   
 
