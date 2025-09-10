@@ -77,7 +77,22 @@ app.post("/", async (req, res) => {
 
   console.log("Sucess", responseServopa.data);
 
-  return res.json({ message: JSON.stringify(responseServopa.data) });
+  // return res.json({ message: JSON.stringify(responseServopa.data) });
+
+      const html = `
+      <html>
+        <head>
+          <title>PDFs do fluxo</title>
+        </head>
+        <body>
+          <h3>PDFs do fluxo</h3>
+          <ul>
+            ${responseServopa.data.map(link => `<li><a href="${link}" target="_blank">Abrir PDF</a></li>`).join('')}
+          </ul>
+        </body>
+      </html>
+    `;
+  res.send(html);
 });
 
 // const options = {
