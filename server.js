@@ -81,25 +81,26 @@ app.post("/", async (req, res) => {
   // const pdfLinksHtml = responseServopa.data.map(pdf => { return `<a href='${pdf.url}'>${pdf.label}</a>`; }); // Junte todos os links com um separador e adicione à mensagem 
   // messageHtml += pdfLinksHtml.join(" | ");
 
-  // return res.json({"looker": { "success": true, "message": `${messageHtml}` } });
+  return res.json({"looker": { "success": true, 
+  "links": [ { "label": "PDF 1", "url": "https://seuservidor.com/pdf1.pdf", "type": "URL" }, { "label": "PDF 2", "url": "https://seuservidor.com/pdf2.pdf", "type": "URL" } ]} });
 
   
 
 
-      const html = `
-      <html>
-        <head>
-          <title>PDFs do fluxo</title>
-        </head>
-        <body>
-          <h3>PDFs do fluxo</h3>
-          <ul>
-            ${responseServopa.data.map(link => `<li><a href="${link}" target="_blank">Abrir PDF</a></li>`).join('')}
-          </ul>
-        </body>
-      </html>
-    `;
-  res.send(html);
+  //     const html = `
+  //     <html>
+  //       <head>
+  //         <title>PDFs do fluxo</title>
+  //       </head>
+  //       <body>
+  //         <h3>PDFs do fluxo</h3>
+  //         <ul>
+  //           ${responseServopa.data.map(link => `<li><a href="${link}" target="_blank">Abrir PDF</a></li>`).join('')}
+  //         </ul>
+  //       </body>
+  //     </html>
+  //   `;
+  // res.send(html);
 });
 
 
