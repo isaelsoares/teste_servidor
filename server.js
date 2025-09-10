@@ -57,7 +57,7 @@ app.use(bodyParser.json());
 // });
 
 app.post("/", async (req, res) => {
-  console.log(req.data["X-API-KEY"]);
+  console.log(req.data);
   // return res.json({ message: req.data });
 
   const X_API_KEY = req.data["X-API-KEY"];
