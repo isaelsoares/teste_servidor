@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from "cors";
+import axios from "axios";
 // import https from "https";
 // import fs from "fs";
 // const https = require("https"); // para criar o servidor HTTPS
