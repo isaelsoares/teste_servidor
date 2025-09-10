@@ -57,26 +57,26 @@ app.use(bodyParser.json());
 // });
 
 app.post("/", async (req, res) => {
-  console.log(req.body);
-  return res.json({ message: req.data });
+  console.log(req.body.data);
+  // return res.json({ message: req.data });
 
-  // const X_API_KEY = req.data["X-API-KEY"];
-  // const X_API_LOGIN = req.data["X-API-LOGIN"];
-  // const X_API_PASS = req.data["X-API-PASS"];
+  const X_API_KEY = req.body.data["X-API-KEY"];
+  const X_API_LOGIN = req.body.data["X-API-LOGIN"];
+  const X_API_PASS = req.body.data["X-API-PASS"];
 
-  // const responseServopa = await axios.get(
-  //   "https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208",
-  //   {
-  //     headers: {
-  //       "X-API-KEY": X_API_KEY,
-  //       "X-API-LOGIN": X_API_LOGIN,
-  //       "X-API-PASS": X_API_PASS,
-  //     },
-  // });
+  const responseServopa = await axios.get(
+    "https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208",
+    {
+      headers: {
+        "X-API-KEY": X_API_KEY,
+        "X-API-LOGIN": X_API_LOGIN,
+        "X-API-PASS": X_API_PASS,
+      },
+  });
 
-  // console.log("Sucess", responseServopa);
+  console.log("Sucess", responseServopa);
 
-  // return res.json({ message: "Deu certo" });
+  return res.json({ message: "Deu certo" });
 });
 
 // const options = {
