@@ -2,6 +2,10 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from "cors";
+// import https from "https";
+// import fs from "fs";
+// const https = require("https"); // para criar o servidor HTTPS
+// const fs = require("fs"); 
 
 const app = express();
 app.use(cors());
@@ -53,19 +57,34 @@ app.use(bodyParser.json());
 // });
 
 app.post("/", async (req, res) => {
-  console.log(req.data.X-API-KEY);
-  return res.json({ message: req.data });
+  console.log(req.data["X-API-KEY"]);
+  // return res.json({ message: req.data });
 
-  // const responseServopa = await axios.get(
-  //   "https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208",
-  //   {
-  //     headers: {
-  //       "X-API-KEY": req.data.X-API-KEY,
-  //       "X-API-LOGIN": req.data.X-API-LOGIN,
-  //       "X-API-PASS": req.data.X-API-PASS,
-  //     },
-  //   }
-  // );
+  const X_API_KEY = req.data["X-API-KEY"];
+  const X_API_LOGIN = req.data["X-API-LOGIN"];
+  const X_API_PASS = req.data["X-API-PASS"];
+
+  const responseServopa = await axios.get(
+    "https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208",
+    {
+      headers: {
+        "X-API-KEY": X_API_KEY,
+        "X-API-LOGIN": X_API_LOGIN,
+        "X-API-PASS": X_API_PASS,
+      },
+  });
+
+  console.log(responseServopa.data);
+
+  return res.json({ message: responseServopa.data });
 });
 
+// const options = {
+//   key: fs.readFileSync("server.key"),
+//   cert: fs.readFileSync("server.cert")
+// };
+
 app.listen(3000, () => console.log("Backend rodando na porta 3000"));
+// https.createServer(options, app).listen(3000, () => {
+//   console.log("Servidor HTTPS rodando em https://localhost:3000");
+// });
