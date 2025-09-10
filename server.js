@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -77,7 +77,7 @@ app.post("/", async (req, res) => {
 
   console.log("Sucess", responseServopa);
 
-  return res.json({ message: "Deu certo" });
+  return res.json({ message: responseServopa.data });
 });
 
 // const options = {
