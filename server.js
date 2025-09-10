@@ -77,7 +77,13 @@ app.post("/", async (req, res) => {
 
   console.log("Sucess", responseServopa.data);
 
-  return res.json({"looker": { "success": true, "message": "Deu certo" } });
+  let messageHtml = "Acesse seus PDFs aqui: "; // Itere sobre os dados para criar os links HTML
+  const pdfLinksHtml = responseServopa.data.map(pdf => { return `<a href='${pdf.url}'>${pdf.label}</a>`; }); // Junte todos os links com um separador e adicione à mensagem 
+  messageHtml += pdfLinksHtml.join(" | ");
+
+  return res.json({"looker": { "success": true, "message": {messageHtml} } });
+
+  
 
 
   //     const html = `
