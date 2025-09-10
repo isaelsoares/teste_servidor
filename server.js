@@ -74,9 +74,9 @@ app.post("/", async (req, res) => {
       },
   });
 
-  console.log(responseServopa.data);
+  console.log("Sucess", responseServopa);
 
-  return res.json({ message: responseServopa.data });
+  return res.json({ message: "Deu certo" });
 });
 
 // const options = {
