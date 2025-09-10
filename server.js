@@ -77,7 +77,7 @@ app.post("/", async (req, res) => {
 
   console.log("Sucess", responseServopa);
 
-  return res.json({ message: responseServopa.data });
+  return res.json({ message: JSON.stringify(responseServopa.data) });
 });
 
 // const options = {
