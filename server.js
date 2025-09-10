@@ -52,14 +52,20 @@ app.use(bodyParser.json());
 //   });
 // });
 
-app.post("/", (req, res) => {
-  console.log(req.body);
-  return res.json({ message: req.body });
-  // const response = await axios.get("https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208", {
-  //   headers: {
+app.post("/", async (req, res) => {
+  console.log(req.data.X-API-KEY);
+  return res.json({ message: req.data });
 
+  // const responseServopa = await axios.get(
+  //   "https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208",
+  //   {
+  //     headers: {
+  //       "X-API-KEY": req.data.X-API-KEY,
+  //       "X-API-LOGIN": req.data.X-API-LOGIN,
+  //       "X-API-PASS": req.data.X-API-PASS,
+  //     },
   //   }
-  // })
+  // );
 });
 
 app.listen(3000, () => console.log("Backend rodando na porta 3000"));
