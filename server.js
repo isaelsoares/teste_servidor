@@ -53,6 +53,7 @@ app.use(bodyParser.json());
 // });
 
 app.post("/", (req, res) => {
+  console.log(req.body);
   return res.json({ message: req.body });
   // const response = await axios.get("https://hermes.gruposervopa.com.br/apiServopa/SmartShare/GetTempFilesFluxo/2457208", {
   //   headers: {
